@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="GUI:jar">
+    <output-path>$PROJECT_DIR$/Jars_and_readme</output-path>
+    <root id="root">
+      <element id="archive" name="GUI.jar">
+        <element id="module-output" name="GUI" />
+      </element>
+    </root>
+  </artifact>
+</component>

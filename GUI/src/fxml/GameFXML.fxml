@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="mainGameScrollPane" fitToHeight="true" fitToWidth="true" minHeight="500.0" minWidth="600.0" prefHeight="600.0" prefWidth="900.0" stylesheets="@CSS/Style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
+   <content>
+      <AnchorPane>
+         <children>
+            <BorderPane id="gameBorderPane" fx:id="gameBorderPane" prefHeight="567.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <VBox alignment="CENTER" fillWidth="false" prefHeight="88.0" prefWidth="898.0">
+                     <children>
+                        <Label fx:id="mainLogo" alignment="CENTER" contentDisplay="CENTER" text="N in a Row">
+                           <font>
+                              <Font name="Agency FB Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="targetLabel" alignment="CENTER" text="Current Game Target: X" visible="false">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <AnchorPane>
+                           <children>
+                              <HBox fx:id="menuBar" alignment="CENTER" prefHeight="31.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="startGameButton" disable="true" mnemonicParsing="false" onAction="#startGame" prefWidth="120.0" styleClass="MenuBarButtons" text="Start Game">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                  <Button fx:id="LoadXMLButton" mnemonicParsing="false" onAction="#openXMLFile" prefWidth="120.0" styleClass="MenuBarButtons" text="Load XML File" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="endGameButton" disable="true" mnemonicParsing="false" onAction="#endGameButton" prefWidth="120.0" styleClass="MenuBarButtons" text="End Game">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                  <Button fx:id="replayModeButton" disable="true" mnemonicParsing="false" onAction="#startReplayMode" prefWidth="120.0" styleClass="MenuBarButtons" text="Replay Mode">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitGame" prefWidth="120.0" styleClass="MenuBarButtons" text="Exit">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </top>
+               <left>
+                  <VBox fillWidth="false" maxWidth="600.0" prefHeight="414.0" prefWidth="272.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label styleClass="playersLogo" text="Players" underline="true">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="10.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane maxWidth="600.0" prefHeight="378.0" prefWidth="270.0">
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                           <children>
+                              <GridPane fx:id="playersInfoGrid" alignment="CENTER" maxHeight="350.0" maxWidth="600.0" prefHeight="300.0" prefWidth="278.0" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="20.0" prefWidth="120.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="35.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="15.0" valignment="CENTER" vgrow="ALWAYS" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="15.0" valignment="CENTER" vgrow="ALWAYS" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="ID" textAlignment="CENTER" underline="true" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label styleClass="playersLabels" text="Name" underline="true" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label styleClass="playersLabels" text="Color" underline="true" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label styleClass="playersLabels" text="Type" underline="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label styleClass="playersLabels" text="# Moves" textAlignment="CENTER" underline="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerIdLabel1" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerIdLabel1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerNum1" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerNum1" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moveCountLabel1" alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="moveCountLabel1" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerIdLabel2" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerIdLabel2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerNum2" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerNum2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moveCountLabel2" alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="moveCountLabel2" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerIdLabel3" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerIdLabel3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerNum3" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerNum3" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moveCountLabel3" alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="moveCountLabel3" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerIdLabel4" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerIdLabel4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerNum4" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerNum4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moveCountLabel4" alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="moveCountLabel4" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerIdLabel5" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerIdLabel5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerNum5" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerNum5" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerIdLabel6" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerIdLabel6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="playerNum6" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" styleClass="playersLabels" text="playerNum6" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moveCountLabel5" alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="moveCountLabel5" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moveCountLabel6" alignment="CENTER" contentDisplay="CENTER" styleClass="playersLabels" text="moveCountLabel6" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Circle fx:id="playerColor1" fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE" styleClass="player1" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                    <Circle fx:id="playerColor2" fill="#ffec1f" radius="15.0" stroke="BLACK" strokeType="INSIDE" styleClass="player2" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                                    <Circle fx:id="playerColor3" fill="#004c94" radius="15.0" stroke="BLACK" strokeType="INSIDE" styleClass="player3" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                                    <Circle fx:id="playerColor4" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE" styleClass="player4" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                                    <Circle fx:id="playerColor5" fill="#4ecd00" radius="15.0" stroke="BLACK" strokeType="INSIDE" styleClass="player5" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
+                                    <Circle fx:id="playerColor6" radius="15.0" stroke="BLACK" strokeType="INSIDE" styleClass="player6" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
+                                    <ImageView fx:id="playerType1" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                    <ImageView fx:id="playerType2" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                                    <ImageView fx:id="playerType3" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                                    <ImageView fx:id="playerType4" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                                    <ImageView fx:id="playerType5" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
+                                    <ImageView fx:id="playerType6" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
+                                    <ImageView fx:id="activePlayer1" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="activePlayersPic" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                       <image>
+                                          <Image url="@pointing.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="activePlayer2" fitHeight="35.0" fitWidth="35.0" layoutX="231.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="activePlayersPic" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                       <image>
+                                          <Image url="@pointing.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="activePlayer4" fitHeight="35.0" fitWidth="35.0" layoutX="231.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" styleClass="activePlayersPic" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                                       <image>
+                                          <Image url="@pointing.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="activePlayer5" fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" styleClass="activePlayersPic" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                       <image>
+                                          <Image url="@pointing.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="activePlayer6" fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" styleClass="activePlayersPic" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                                       <image>
+                                          <Image url="@pointing.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="activePlayer3" fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" styleClass="activePlayersPic" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                                       <image>
+                                          <Image url="@pointing.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <HBox layoutX="14.0" layoutY="315.0" prefHeight="32.0" prefWidth="302.0" spacing="20.0">
+                                 <children>
+                                    <CheckBox fx:id="animationCheckBox" mnemonicParsing="false" onAction="#toggleAnimation" styleClass="playersLabels" text="Show Animations" />
+                                    <MenuButton fx:id="cssStylesMenu" mnemonicParsing="false" text="Choose Theme">
+                                      <items>
+                                        <MenuItem fx:id="menuItemLightOption" mnemonicParsing="false" onAction="#loadLightCSS" text="Light" />
+                                        <MenuItem fx:id="menuItemDarkOption" mnemonicParsing="false" onAction="#loadDarkCSS" text="Dark" />
+                                          <MenuItem fx:id="menuItemDisneyOption" mnemonicParsing="false" onAction="#loadDisneyCSS" text="Disney" />
+                                      </items>
+                                    </MenuButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </left>
+               <bottom>
+                  <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox fx:id="replayBar" alignment="TOP_CENTER" prefHeight="34.0" prefWidth="724.0" visible="false">
+                           <children>
+                              <Label contentDisplay="CENTER" text="Replay Mode" underline="true">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="31.0" prefWidth="423.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                                 <children>
+                                  <Button fx:id="prevMoveButton" mnemonicParsing="false" onAction="#prevMove" text="&lt;-">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="endReplayModeButton" mnemonicParsing="false" onAction="#endReplayMode" text="End Replay Mode">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="nextMoveButton" mnemonicParsing="false" onAction="#nextMove" text="-&gt;">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <StackPane fx:id="resignPane" prefHeight="67.0" prefWidth="101.0">
+                           <children>
+                              <Button id="resignButton" fx:id="resignButton" alignment="CENTER" mnemonicParsing="false" onAction="#resignPlayer" text="Resign" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

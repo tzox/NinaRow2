@@ -1,0 +1,117 @@
+.ArrowDownButtons
+{
+	-fx-border-color: transparent;
+	-fx-border-width: 0;
+	-fx-background-radius: 0;
+	-fx-background-color: transparent;
+	-fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+	-fx-font-size: 1em; /* 12 */
+	-fx-text-fill: #828282;
+}
+
+.ArrowUpButtons {
+	-fx-border-color: transparent;
+	-fx-border-width: 0;
+	-fx-background-radius: 0;
+	-fx-background-color: transparent;
+	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+	-fx-font-size: 1em; /* 12 */
+	-fx-text-fill: #828282;
+}
+
+.gridCellRec
+{
+	-fx-fill: tan;
+	-fx-stroke: black;
+	-fx-stroke-width: 1;
+
+}
+
+.label
+{
+	-fx-text-fill: black;
+}
+
+
+.player0
+{
+	-fx-fill: white;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+}
+
+.player1
+{
+	-fx-fill: GreenYellow;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+
+}
+
+
+.player2
+{
+	-fx-fill: darkblue;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+}
+
+
+.player3
+{
+	-fx-fill: OrangeRed ;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+}
+
+
+.player4
+{
+	-fx-fill: SeaGreen;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+}
+
+
+.player5
+{
+	-fx-fill: LightSeaGreen;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+}
+
+
+.player6
+{
+	-fx-fill: Purple;
+	-fx-effect: innershadow(gaussian, black, 10, 0.3, 0,0);
+}
+
+#gameBorderPane
+{
+	-fx-background-image: url("background2.jpg");
+	/*-fx-background-color: linear-gradient(gray,white);*/
+
+}
+
+
+.resignedPlayer
+{
+	-fx-text-fill: gray;
+	-fx-opacity: 0.5;
+}
+
+.activePlayersPic
+{
+	-fx-image: url("pointing.png")
+}
+
+.MenuBarButtons{
+	-fx-background-color:
+			#000000,
+			linear-gradient(#7ebcea, #2f4b8f),
+			linear-gradient(#426ab7, #263e75),
+			linear-gradient(#395cab, #223768);
+	-fx-background-insets: 0,1,2,3;
+	-fx-background-radius: 3,2,2,2;
+	-fx-padding: 5 15 5 15;
+	-fx-text-fill: white;
+	-fx-font-size: 12px;
+
+	-fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+}
+
